@@ -1,0 +1,8 @@
+/fraud_detector/input/
+/fraud_detector/output/
+/fraud_detector/train_data/
+.venv
+*.DS_Store
+*.csv
+*.json
+*.png
