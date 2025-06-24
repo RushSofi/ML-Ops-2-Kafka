@@ -147,15 +147,15 @@ transaction_time,amount,cat_id,population_city,...
 ```
 # Настройки инфраструктуры
 Kafka:
-  Топики:
+* Топики:
     - transactions (3 партиции)
     - scoring (3 партиции)
-  Репликация: 1 (для разработки)
-  Партиции: 3
+* Репликация: 1 (для разработки)
+* Партиции: 3
 
 PostgreSQL:
-  БД: fraud_db
-  Таблица: transactions
+* БД: fraud_db
+* Таблица: transactions
 
 
 Если сервисы не стартуют:

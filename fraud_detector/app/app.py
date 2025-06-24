@@ -7,8 +7,8 @@ from datetime import datetime
 from confluent_kafka import Consumer, Producer, KafkaError
 
 sys.path.append(os.path.abspath('./src'))
-from preprocessing import preprocess_data  # Ваш препроцессинг
-from scorer import make_pred  # Ваш скоринг
+from preprocessing import preprocess_data 
+from scorer import make_pred  
 
 logging.basicConfig(
     level=logging.INFO,
@@ -56,18 +56,7 @@ class ProcessingService:
                 transaction_id = data['transaction_id']
                 input_df = pd.DataFrame([data['data']])
                 
-                # Ваш препроцессинг
-                processed_df = preprocess_data(input_df)  # Используем ваш препроцессинг
-                
-                # Ваш скоринг
-                # submission, scores = make_pred(processed_df, "kafka_stream")
-                
-                # # Формируем результат для Kafka
-                # result = {
-                #     "transaction_id": transaction_id,
-                #     "score": float(scores[0]),  # Предполагаем, что scores - массив
-                #     "fraud_flag": int(submission['prediction'].iloc[0])
-                # }
+                processed_df = preprocess_data(input_df) 
 
                 score, fraud_flag = make_pred(processed_df, "kafka_stream")
                 result = {

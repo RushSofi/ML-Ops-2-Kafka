@@ -7,7 +7,6 @@ import numpy as np
 
 logger = logging.getLogger(__name__)
 
-# Порог и модель
 DEFAULT_THRESHOLD = 0.95
 logger.info('Importing pretrained LightGBM model...')
 model = lgb.Booster(model_file='./models/model.txt')
@@ -27,12 +26,8 @@ def make_pred(dt, source_info="kafka"):
     
     if extra:
         logger.warning(f"Extra features: {extra}")
-        # dt = dt.drop(columns=list(extra))
         dt = dt[required_features]  # Оставляем только нужные
     
-    # Предсказание
-    # scores = model.predict(dt)[0]  # Извлекаем первый элемент
-    # fraud_flag = int(scores >= model_th)
     scores = model.predict(dt)
     fraud_flag = (scores >= model_th).astype(int)
     

@@ -38,7 +38,7 @@ services:
     image: confluentinc/cp-kafka:7.3.0
     depends_on:
       kafka:
-        condition: service_healthy  # Ждем пока Kafka станет здоровой
+        condition: service_healthy 
     networks:
       - ml-scorer
     restart: on-failure
